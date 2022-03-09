@@ -4,9 +4,14 @@ using System.Collections;
 [System.Serializable]
 public struct Degree
 {
-    public const float MIN = 0.0f;
-    public const float MID = 180.0f;
-    public const float MAX = 360.0f;
+    public Degree Min => new Degree(min);
+    private const float min = 0.0f;
+
+    public Degree Mid => new Degree(mid);
+    private const float mid = 180.0f;
+
+    public Degree Max => new Degree(max);
+    private const float max = mid * 2.0f;
 
     /// <summary>
     /// ランダムな角度
@@ -15,21 +20,21 @@ public struct Degree
     {
         get
         {
-            return new Degree(Random.Range(MIN, MAX - Mathf.Epsilon));
+            return new Degree(Random.Range(min, max - Mathf.Epsilon));
         }
     }
 
-    [SerializeField, Range(MIN, MAX)]
+    [SerializeField, Range(min, max)]
     private float angle;
 
-    public float Radian
-    {
-        get
-        {
-            return angle * Mathf.Deg2Rad;
-        }
-    }
+    /// <summary>
+    /// ラジアン
+    /// </summary>
+    public Radian Radian => new Radian(angle * Mathf.Deg2Rad);
 
+    /// <summary>
+    /// x軸を0度どした反時計回りの方向ベクトル
+    /// </summary>
     public Vector3 XY
     {
         get
@@ -102,19 +107,19 @@ public struct Degree
 
     private void Fix()
     {
-        if (angle < MIN)
+        if (angle < min)
         {
             do
             {
-                angle += MAX;
-            } while (angle < MIN);
+                angle += max;
+            } while (angle < min);
         }
-        else if (angle >= MAX)
+        else if (angle >= max)
         {
             do
             {
-                angle -= MAX;
-            } while (angle >= MIN);
+                angle -= max;
+            } while (angle >= min);
         }
     }
 }

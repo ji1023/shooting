@@ -402,21 +402,21 @@ public class Boss : Enemy
         move.onTransitioned = () => 
         {
             speed = moveSecond;
-            behaviourTimer.Restart(moveSecondBuff.GetValue(moveSecond, LifeRatio.Reversed, StageManager.Instance.LevelRatio));
+            behaviourTimer.Restart(moveSecondBuff.GetValue(moveSecond, LifeRatio.Fliped, StageManager.Instance.LevelRatio));
         };
         //
         //  狙い撃ち
         var aimShot = states.AddState(State.AimShot, AimShot);
         aimShot.AddTransition(State.MoveShot, ()=> 
         {
-            var count = (int)aimShotCountBuff.GetValue(aimShotCount, LifeRatio.Reversed, StageManager.Instance.LevelRatio);
+            var count = (int)aimShotCountBuff.GetValue(aimShotCount, LifeRatio.Fliped, StageManager.Instance.LevelRatio);
             return shotedCounter >= count;
         });
         aimShot.onTransitioned = () => 
         {
             shotedCounter = 0;
             behaviourTimer.isLooping = true;
-            behaviourTimer.Restart(aimShotIntervalBuff.GetValue(aimShotInterval, LifeRatio.Reversed, StageManager.Instance.LevelRatio));
+            behaviourTimer.Restart(aimShotIntervalBuff.GetValue(aimShotInterval, LifeRatio.Fliped, StageManager.Instance.LevelRatio));
         };
         aimShot.onFinished = () => 
         {
@@ -427,7 +427,7 @@ public class Boss : Enemy
         var moveShot = states.AddState(State.MoveShot, MoveShot);
         moveShot.AddTransition(State.BeamShot, ()=> 
         {
-            var count = (int)moveShotCountBuff.GetValue(moveShotCount, LifeRatio.Reversed, StageManager.Instance.LevelRatio);
+            var count = (int)moveShotCountBuff.GetValue(moveShotCount, LifeRatio.Fliped, StageManager.Instance.LevelRatio);
             return shotedCounter >= moveShotCount;
         });
         moveShot.onTransitioned = () =>
@@ -435,7 +435,7 @@ public class Boss : Enemy
             speed = moveShotingSpeed;
             shotedCounter = 0;
             behaviourTimer.isLooping = true;
-            behaviourTimer.Restart(moveShotIntervalBuff.GetValue(moveShotInterval, LifeRatio.Reversed, StageManager.Instance.LevelRatio));
+            behaviourTimer.Restart(moveShotIntervalBuff.GetValue(moveShotInterval, LifeRatio.Fliped, StageManager.Instance.LevelRatio));
         };
         moveShot.onFinished = () =>
         {
@@ -453,7 +453,7 @@ public class Boss : Enemy
         summon.onTransitioned = Summon;
 
         // 左を向く
-        Angle = Degree.MID;
+        Angle = Degree.mid;
 
         // 初期座標の保存
         approachBeginPos = transform.position;
@@ -544,13 +544,13 @@ public class Boss : Enemy
     {
         // タイマー設定
         var levelRatio = StageManager.Instance.LevelRatio;
-        behaviourTimer.Restart(beamShotedWaitSecondBuff.GetValue(beamShotedWaitSecond, LifeRatio.Reversed, levelRatio));
+        behaviourTimer.Restart(beamShotedWaitSecondBuff.GetValue(beamShotedWaitSecond, LifeRatio.Fliped, levelRatio));
 
         // ビーム作成
         var beam = beams.Generate(beamShotPos.transform.position);
         beam.clingObject = beamShotPos;
         beam.Angle = Angle + 90.0f;
-        beam.damageBuff = beamDamageDebuff + beamDamageBuff.GetValue(1.0f, LifeRatio.Reversed, levelRatio);
+        beam.damageBuff = beamDamageDebuff + beamDamageBuff.GetValue(1.0f, LifeRatio.Fliped, levelRatio);
         beam.ChargeRatio = levelRatio;
 
         // カメラ振動
@@ -571,10 +571,10 @@ public class Boss : Enemy
     {
         // タイマー設定
         var levelRatio = StageManager.Instance.LevelRatio;
-        behaviourTimer.Restart(summonedWaitSecondBuff.GetValue(summonedWaitSecond, LifeRatio.Reversed, levelRatio));
+        behaviourTimer.Restart(summonedWaitSecondBuff.GetValue(summonedWaitSecond, LifeRatio.Fliped, levelRatio));
 
         // 敵の生成
-        var count = (int)summonCountBuff.GetValue(summonCount, LifeRatio.Reversed, levelRatio);
+        var count = (int)summonCountBuff.GetValue(summonCount, LifeRatio.Fliped, levelRatio);
         var angleAdd = summonAngle / (count + 1);
         var angle = Angle - (summonAngle * 0.5f) + angleAdd;
         for (int i = 0; i < count; ++i)

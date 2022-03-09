@@ -74,7 +74,7 @@ public class ShottableEnemy : Enemy
         base.OnInstantiated();
         bullets.beforeOnInstantiated += (Bullet bullet) =>
         {
-            bullet.Angle = Degree.MID;
+            bullet.Angle = Degree.mid;
             bullet.tag = Tags.EnemyWeapon;
         };
     }

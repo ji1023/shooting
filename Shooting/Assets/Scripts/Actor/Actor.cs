@@ -47,7 +47,7 @@ public class Actor : PoolableObject
             var rad = value.Radian;
             var sin = Mathf.Sin(rad);
             var cos = Mathf.Cos(rad);
-            direction = new Vector2( cos, sin).normalized;
+            direction = new Vector2(cos, sin).normalized;
             Left  = new Vector2(-sin, cos).normalized;
             angle = value;
             transform.rotation = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
@@ -57,7 +57,7 @@ public class Actor : PoolableObject
     /// <summary>
     /// レンダラー
     /// </summary>
-    public SpriteRenderer Renderer { get; private set; } = null;
+    protected SpriteRenderer Renderer { get; private set; } = null;
 
     /// <summary>
     /// 元々の色

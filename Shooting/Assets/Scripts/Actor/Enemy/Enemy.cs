@@ -201,7 +201,7 @@ public class Enemy : Actor
     {
         base.OnGenerated();
         ResetLife();
-        Angle = Degree.MID;
+        Angle = Degree.mid;
 
         // 弱点の設定
         var manager = EnemyManager.Instance;

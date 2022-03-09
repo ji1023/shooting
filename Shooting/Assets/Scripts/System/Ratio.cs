@@ -18,7 +18,7 @@ public struct Ratio
     /// <summary>
     /// 逆の割合（1から引いた数値）
     /// </summary>
-    public Ratio Reversed => 1.0f - value;
+    public Ratio Fliped => 1.0f - value;
 
     public Ratio(float value)
     {
