@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - MovableArea
+  - SelfWeapon
+  - Enemy
+  - EnemyWeapon
+  - Item
+  - UI
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 1777344405
+    locked: 0
+  - name: Item
+    uniqueID: 3755594027
+    locked: 0
+  - name: Effect
+    uniqueID: 586744919
+    locked: 0
+  - name: Weapon
+    uniqueID: 3746148265
+    locked: 0
+  - name: Aircraft
+    uniqueID: 18176729
+    locked: 0
+  - name: UI Lower
+    uniqueID: 2643018165
+    locked: 0
+  - name: Ui Upper
+    uniqueID: 2110027059
+    locked: 0
